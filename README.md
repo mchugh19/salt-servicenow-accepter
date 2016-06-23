@@ -6,7 +6,7 @@ We use ServiceNow (SN) as our CMDB. While our data is likely to be less than 100
 
 Thus our desired workflow is:
 
-<img src="graphics/initial-workflow.svg" width="475">
+<img src="https://cdn.rawgit.com/mchugh19/salt-servicenow-accepter/master/graphics/initial-workflow.svg" width="475">
 
 New minion connects to salt-master -> salt master looks up minion name in SN CMDB -> if name exists, accept minion key
 
@@ -41,7 +41,7 @@ If that runs successfully it should return the CMDB info for the specified serve
 
 The workflow from above can now be expanded for the specifics. We want the salt-master to run a reactor when a new minion connects. If the new minion’s key is in a pending state (not yet accepted or rejected) we want to kick off an orchestrate job which starts a salt runner. 
 
-<img src="graphics/partial-workflow.svg" width="475">
+<img src="https://cdn.rawgit.com/mchugh19/salt-servicenow-accepter/master/graphics/partial-workflow.svg" width="475">
 
 New minion -> salt-master -> reactor -> if new minion key is pending -> orchestrate -> sn auth runner -> …
 
@@ -85,7 +85,7 @@ The first little bit looks up our salt-master so that we don’t have it hardcod
 ## Flush Out Workflow
 Now that the heavy lifting logic is done, let’s finish out the workflow.
 
-<img src="graphics/complete-workflow.svg" width="475">
+<img src="https://cdn.rawgit.com/mchugh19/salt-servicenow-accepter/master/graphics/complete-workflow.svg" width="475">
 
 New minon -> salt-master -> reactor -> if new minion key is pending -> orchestrate -> sn auth runner -> AcceptMinion event -> reactor -> accept key
 
